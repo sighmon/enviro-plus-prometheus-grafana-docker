@@ -7,6 +7,11 @@ An enviro+ air quality sensor, Prometheus &amp; Grafana multi-container using Do
 * [Enviro+ on Docker](https://github.com/sighmon/balena-enviro-plus)
 * [Prometheus/Grafana on Docker for Arm](https://github.com/sighmon/prometheus-grafana-raspberry-pi)
 
+## Run
+
+* Build and run `docker-compose up --build`
+* Or run in the background `docker-compose up -d`
+
 ## TODO
 
 * Submodule Enviro+
