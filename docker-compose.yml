@@ -1,0 +1,48 @@
+# docker-compose.yml
+version: '3'
+services:
+    enviroplus:
+        container_name: enviroplus
+        build: ./enviroplus
+        ports:
+            - "8000:8000"
+    prometheus:
+        container_name: prometheus
+        build: ./prometheus
+        volumes:
+            - prometheus_data:/prometheus
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+        ports:
+            - "9090:9090"
+    node-exporter:
+        container_name: node-exporter
+        image: prom/node-exporter-linux-armv7
+        ports:
+            - "9100:9100"
+    grafana:
+        container_name: grafana
+        image: grafana/grafana:5.4.3
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=password
+            - GF_AUTH_ANONYMOUS_ENABLED=true
+            - GF_AUTH_DISABLE_LOGIN_FORM=false
+            - GF_ORG_NAME=Main Org.
+            - GF_ORG_ROLE=viewer
+        volumes:
+            - grafana_data:/var/lib/grafana
+        depends_on:
+            - prometheus
+        ports:
+            - "3000:3000"
+    alertmanager:
+        container_name: alertmanager
+        build: ./alertmanager
+        command:
+            - '--config.file=/alertmanager.yml'
+        ports:
+            - "9093:9093"
+volumes:
+    prometheus_data: {}
+    grafana_data: {}
+    dhparam_cache: {}
