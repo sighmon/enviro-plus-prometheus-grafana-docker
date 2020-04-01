@@ -14,7 +14,7 @@ An enviro+ air quality sensor, Prometheus &amp; Grafana multi-container using Do
 
 ## TODO
 
-* Submodule Enviro+
-* Setup docker-compose.yml with Prometheus/Grafana
-* Modify storage location for Balena (/data)
-* Test multi-deployments & environment variable setting
+- [x] Submodule Enviro+
+- [x] Setup docker-compose.yml with Prometheus/Grafana
+- [ ] Modify storage location for Balena (/data)
+- [ ] Test multi-deployments & environment variable setting
