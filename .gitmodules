@@ -1,0 +1,3 @@
+[submodule "enviroplus"]
+	path = enviroplus
+	url = https://github.com/sighmon/balena-enviro-plus.git
